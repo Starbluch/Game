@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const images = Array.from(track.children);
   const imageWidth = images[0].getBoundingClientRect().width + 20; // Учитываем margin
   let currentTranslateX = 0; // Текущее смещение
-  const scrollSpeed = 0.2; // Скорость прокрутки
+  const scrollSpeed = 1; // Скорость прокрутки
 
   function scrollCarousel() {
     // Двигаем карусель влево
