@@ -156,37 +156,47 @@ document.addEventListener('DOMContentLoaded', (event) => {
 document.addEventListener('DOMContentLoaded', () => {
   const track = document.querySelector('.carousel-track');
   const images = Array.from(track.children);
-  const imageWidth = images[0].getBoundingClientRect().width + 20; // Учитываем margin
-  let currentTranslateX = 0; // Текущее смещение
-  const scrollSpeed = 1; // Скорость прокрутки
+  const imageWidth = images[0].getBoundingClientRect().width + 20; 
+  let currentTranslateX = 0; 
+  const scrollSpeed = 0.8; 
 
-  function scrollCarousel() {
-    // Двигаем карусель влево
-    currentTranslateX -= scrollSpeed;
-    track.style.transform = `translateX(${currentTranslateX}px)`;
+  let lastTimestamp = 0;
 
-    const firstImage = track.firstElementChild;
-    const rect = firstImage.getBoundingClientRect();
+  function scrollCarousel(timestamp) {
+    if (!lastTimestamp) lastTimestamp = timestamp;
+    const deltaTime = timestamp - lastTimestamp;
 
-    // Если первое изображение вышло за границу видимости, перемещаем его в конец
-    if (rect.right <= 0) {
-      track.appendChild(firstImage);
-      currentTranslateX += imageWidth; // Корректируем положение
+    if (deltaTime > 60) { 
+      currentTranslateX -= scrollSpeed;
       track.style.transform = `translateX(${currentTranslateX}px)`;
+
+      const firstImage = track.firstElementChild;
+      const rect = firstImage.getBoundingClientRect();
+
+      if (rect.right <= 0) {
+        track.appendChild(firstImage);
+        currentTranslateX += imageWidth; 
+      }
+
+      if (currentTranslateX <= -imageWidth * images.length) {
+        currentTranslateX = 0;
+        track.style.transform = `translateX(${currentTranslateX}px)`;
+      }
+
+      lastTimestamp = timestamp;
     }
 
-    // Запускаем следующую итерацию анимации
     requestAnimationFrame(scrollCarousel);
   }
 
-  // Запускаем карусель
-  scrollCarousel();
+  // Запуск анімації
+  requestAnimationFrame(scrollCarousel);
 });
 
 // плавный скролл
 $(document).ready(function () {
   $("a.scrollto").click(function (event) {
-    event.preventDefault(); // Предотвращаем стандартное поведение ссылки
+    event.preventDefault(); 
     var elementClick = $(this).attr("href");
     var destination = $(elementClick).offset().top;
     $("html, body").animate({

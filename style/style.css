@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0px;
   padding: 0px;
@@ -222,7 +223,7 @@ body {
 .tournament-container {
   margin: 30px auto;
   padding: 20px;
-  height: 620px;
+  height: 700px;
   display: grid;
   justify-content: center;
   grid-template-columns: 1fr;
@@ -353,9 +354,10 @@ body {
   display: inline-block;
   width: 120px;
   margin: 20px 30px 0 0;
-  padding: 5px;
+  padding: 10px;
   font-size: 20px;
   border-bottom-right-radius: 20px;
+  z-index: 10;
 }
 .tournament_cards .btn .tournament_btn_2 {
   background-color: #fff;
@@ -363,9 +365,10 @@ body {
   display: inline-block;
   width: 120px;
   margin: 20px 0;
-  padding: 5px;
+  padding: 10px;
   font-size: 20px;
   border-bottom-right-radius: 20px;
+  z-index: 10;
 }
 .tournament_cards .btn .tournament_btn_1::before {
   content: "Shop Now";
@@ -386,11 +389,11 @@ body {
   overflow: hidden;
 }
 .tournament_cards .btn .tournament_btn_1::before .tournament_btn_1:hover {
-  color: #fff;
-  z-index: 5;
+  color: #fff !important;
+  z-index: 5 !important;
 }
 .tournament_cards .btn .tournament_btn_1::before .tournament_btn_1:hover::before {
-  color: #fff;
+  color: #28ea00;
   width: 100%;
   left: 0;
   opacity: 1;
@@ -783,44 +786,149 @@ body {
     margin: 10px;
   }
 }
-@media screen and (max-width: 990px) {
-  .gamers__foto {
-    align-items: center;
-  }
-  .gamers__text p {
-    color: #919191;
-    font-size: 15px;
-    margin: 10px;
-  }
-  .footer__nav a {
-    font-size: 16px;
-  }
-  .footer__logo img {
-    width: 150px;
-    height: auto;
-  }
-}
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 768px) {
   .cards {
     grid-template-columns: 1fr;
   }
+  .tournament__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .title {
+    text-align: center;
+  }
+  .tabs-triggers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+  }
+  .tabs-triggers__item {
+    text-align: center;
+    width: 80%;
+    padding: 10px;
+  }
   .tournament_cards {
+    display: grid;
     grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
   }
-  .gamers__text p {
-    color: #919191;
-    font-size: 10px;
-    margin: 10px;
+  .cards_tr_1,
+  .cards_tr_2,
+  .cards_tr_3 {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 10px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden;
   }
-  .tournament-container {
-    height: 1300px;
+  .logo_tournament {
+    margin: 0 auto 10px;
+  }
+  .logo_tournament img {
+    max-width: 80%;
+    height: auto;
+  }
+  .content {
+    margin-top: 0 !important;
+    text-align: center;
+  }
+  .top {
+    flex-direction: column;
+  }
+  .top__1 {
+    margin-bottom: 10px;
+    margin-right: 0 !important;
+  }
+  .btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .tournament_btn_1,
+  .tournament_btn_2 {
+    width: 90%;
+    max-width: 300px;
+    padding: 8px 10px !important;
+    font-size: 16px;
+    margin: 10px 0 !important;
+  }
+  h1 {
+    font-size: 18px;
+  }
+  p {
+    font-size: 14px;
+  }
+  /* Карусель */
+  .gallery__item {
+    flex: 0 0 100%;
+  }
+  .carousel-item {
+    gap: 0;
+  }
+  .gallery__btn img {
+    width: 30px;
+    height: 30px;
+  }
+  /* Секція Streamer */
+  .banner__gamers__container {
+    padding: 10px;
+    opacity: 0;
+  }
+  .banner__gamers {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 20px;
+    gap: 20px;
+    background-size: cover;
+    margin-top: 70px;
+    opacity: 0px;
+  }
+  .gamers__foto img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+  .gamers__content {
+    margin: 10px 0;
+    text-align: center;
+  }
+  .gamers__title {
+    font-size: 20px;
+  }
+  .gamers__text {
+    font-size: 16px;
+  }
+  .gamers__btn {
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+  }
+  .footer {
+    gap: 30px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 20px;
+  }
+  .footer__social {
+    grid-column: 1/-1;
   }
   .footer__social img {
-    width: 30px !important;
-    height: 30px !important;
+    width: 40px !important;
+    height: auto !important;
   }
   .footer__nav a {
     font-size: 12px;
+  }
+  .footer__logo {
+    margin: 0 auto;
   }
   .footer__logo img {
     width: 150px;
